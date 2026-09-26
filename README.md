@@ -1,6 +1,6 @@
 # Joseph & Juliet Wedding RSVP — V2
 
-A redesigned champagne, navy, and ivory RSVP page for Joseph and Juliet's celebration on Monday, 21 December 2026 at Munondo 11 Events.
+A redesigned blue-and-white RSVP page for Joseph and Juliet's celebration on Monday, 21 December 2026 at Munondo 11 Events.
 
 ## Pages
 
