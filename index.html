@@ -43,46 +43,19 @@
         </div>
       </section>
 
-      <section class="rsvp-card" aria-labelledby="rsvp-heading">
+      <section class="rsvp-card shared-form-card" aria-labelledby="rsvp-heading">
         <div class="section-heading">
           <span class="step-number">01</span>
           <div>
             <p class="eyebrow">Your response</p>
-            <h2 id="rsvp-heading">Will you be attending our wedding?</h2>
+            <h2 id="rsvp-heading">Confirm your attendance</h2>
           </div>
         </div>
-
-        <form id="rsvp-form">
-          <fieldset>
-            <legend>Attendance <span>*</span></legend>
-            <label class="choice"><input type="radio" name="attendance" value="Yes" required /><span class="radio-mark"></span><span>Yes, I’ll be there</span></label>
-            <label class="choice"><input type="radio" name="attendance" value="No" /><span class="radio-mark"></span><span>Sadly, I cannot attend</span></label>
-            <label class="choice"><input type="radio" name="attendance" value="Maybe" /><span class="radio-mark"></span><span>Maybe</span></label>
-          </fieldset>
-
-          <div class="form-divider"></div>
-
-          <div class="field-block">
-            <label for="guests">How many invited guests will you be attending with? <span>*</span></label>
-            <p class="field-note">Please select only the number of guests stated on your invitation card. We are unable to accommodate additional guests.</p>
-            <select id="guests" name="guests" required>
-              <option value="" selected disabled>Select number of guests</option>
-              <option>1</option><option>2</option><option>3</option><option>Other</option>
-            </select>
-          </div>
-
-          <div class="field-block">
-            <label for="names">Full name(s) of everyone attending, including your name <span>*</span></label>
-            <textarea id="names" name="names" rows="3" required placeholder="Type the full name(s) here"></textarea>
-          </div>
-
-          <button type="submit" class="submit-button">Send RSVP <span>→</span></button>
-          <p class="form-footnote">Your response is private and will only be used for wedding planning.</p>
-          <div id="success-message" class="success-message" role="status" hidden>Thank you — your RSVP has been recorded.</div>
-        </form>
+        <p class="shared-form-copy">Please complete the secure RSVP form below. Your response will be recorded centrally so the wedding team can see submissions from every phone.</p>
+        <a class="submit-button shared-form-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdUGcJEQ6uNc-sGwar0F4VLFQfldJKxdSIdh1viYjbuNeP1Iw/viewform" target="_blank" rel="noopener">Open RSVP form <span>↗</span></a>
+        <p class="form-footnote">Your response is private and visible only to the wedding owner.</p>
       </section>
       <footer>Joseph &amp; Juliet <span>•</span> 21.12.2026 <a class="admin-link" href="admin.html">Owner admin</a></footer>
     </main>
-    <script src="script.js"></script>
   </body>
 </html>
