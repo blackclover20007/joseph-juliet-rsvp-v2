@@ -1,1 +1,56 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Admin | Joseph & Juliet RSVP</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/><link rel="stylesheet" href="styles.css"/><style>.admin-page{width:min(100% - 30px,980px);margin:38px auto;padding-bottom:30px}.admin-login,.admin-table-wrap{background:rgba(255,253,249,.97);border:1px solid rgba(45,111,163,.28);box-shadow:var(--shadow)}.admin-login{max-width:430px;margin:90px auto;padding:42px 34px;text-align:center}.admin-login h1,.admin-top h1{font-size:clamp(42px,7vw,64px);line-height:.9;margin:10px 0 24px}.admin-login input{display:block;width:100%;margin:10px 0;padding:14px;border:1px solid var(--line);background:#ffffff;font:15px Inter,sans-serif}.admin-error{color:#9b3d4b;font:12px Inter,sans-serif;margin-top:12px}.admin-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:20px}.admin-actions{display:flex;gap:10px;flex-wrap:wrap}.admin-button{border:1px solid var(--accent);background:var(--paper);color:var(--ink);padding:12px 15px;font:700 10px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.admin-button.primary{background:var(--ink);color:var(--paper)}.admin-note{margin:0 0 22px;color:var(--muted);font:13px/1.5 Inter,sans-serif}.admin-table-wrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse;text-align:left}th{background:#e5f0f8;color:var(--accent-dark);font:700 10px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}th,td{padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top}td{font:17px/1.3 "Cormorant Garamond",Georgia,serif}td small{color:var(--muted);font:11px Inter,sans-serif}.pill{display:inline-block;padding:5px 9px;background:#dcecf7;color:#174a78;font:700 10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}.empty{padding:50px 20px;text-align:center;color:var(--muted);font:19px "Cormorant Garamond",Georgia,serif}.back{display:inline-block;margin-top:19px;color:var(--accent-dark);font:12px Inter,sans-serif;text-decoration:none}@media(max-width:600px){.admin-page{width:min(100% - 16px,980px);margin-top:18px}.admin-top{align-items:flex-start;flex-direction:column}.admin-login{margin:48px auto;padding:34px 22px}}</style></head><body><main class="admin-page"><section id="login" class="admin-login"><p class="eyebrow">Owner access</p><h1>RSVP admin</h1><p style="font:17px 'Cormorant Garamond',Georgia,serif;color:var(--muted)">Enter your admin details to view attendees.</p><input id="user" autocomplete="username" placeholder="Admin user"/><input id="pass" type="password" autocomplete="current-password" placeholder="Password"/><button class="admin-button primary" id="login-btn" style="width:100%;margin-top:12px">Sign in</button><p class="admin-error" id="error" hidden>Incorrect user or password.</p></section><section id="dashboard" hidden><div class="admin-top"><div><p class="eyebrow">Joseph & Juliet</p><h1>Attending guests</h1></div><div class="admin-actions"><button class="admin-button" id="export">Export CSV</button><button class="admin-button primary" id="refresh">Refresh</button></div></div><p class="admin-note">Simple local admin panel. It shows RSVP details stored in this browser.</p><section class="admin-table-wrap"><div id="empty" class="empty">No RSVP responses recorded yet.</div><table id="table" hidden><thead><tr><th>Names</th><th>Attendance</th><th>Guests</th><th>Submitted</th></tr></thead><tbody id="rows"></tbody></table></section><a class="back" href="index.html">← Back to RSVP</a></section></main><script>const KEY='joseph-juliet-rsvps',USER='1234',PASS='5678';const login=()=>{if(document.querySelector('#user').value===USER&&document.querySelector('#pass').value===PASS){document.querySelector('#login').hidden=true;document.querySelector('#dashboard').hidden=false;load()}else document.querySelector('#error').hidden=false};document.querySelector('#login-btn').addEventListener('click',login);document.querySelector('#pass').addEventListener('keydown',e=>{if(e.key==='Enter')login()});const escapeHtml=v=>String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));const load=()=>{const data=JSON.parse(localStorage.getItem(KEY)||'[]').reverse();document.querySelector('#rows').innerHTML=data.map(r=>`<tr><td><strong>${escapeHtml(r.names||'—')}</strong></td><td><span class="pill">${escapeHtml(r.attendance||'—')}</span></td><td>${escapeHtml(r.guests||'—')}</td><td><small>${r.submittedAt?new Date(r.submittedAt).toLocaleString():'—'}</small></td></tr>`).join('');document.querySelector('#empty').hidden=data.length>0;document.querySelector('#table').hidden=data.length===0};document.querySelector('#refresh').addEventListener('click',load);document.querySelector('#export').addEventListener('click',()=>{const data=JSON.parse(localStorage.getItem(KEY)||'[]');const csv=[['Names','Attendance','Guests','Submitted'],...data.map(r=>[r.names||'',r.attendance||'',r.guests||'',r.submittedAt||''])].map(row=>row.map(v=>`"${String(v).replaceAll('"','""')}"`).join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='joseph-juliet-rsvp-responses.csv';a.click()});</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Admin | Joseph & Juliet RSVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .admin-page{width:min(100% - 30px,980px);margin:28px auto 40px}
+    .admin-shell{position:relative;background:rgba(255,255,255,.98);border:1px solid rgba(45,111,163,.28);box-shadow:var(--shadow);overflow:hidden}
+    .admin-shell:before{content:"";display:block;height:7px;background:linear-gradient(90deg,#12345b,#2d6fa3,#a9cbe3,#2d6fa3,#12345b)}
+    .admin-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:42px clamp(24px,6vw,68px) 30px;background:linear-gradient(135deg,#f7fbfe,#fff)}
+    .admin-header h1{font-size:clamp(42px,7vw,68px);line-height:.85;margin:9px 0 0}
+    .admin-header h1 em{color:var(--accent-dark);font-weight:500}
+    .admin-lock{color:var(--accent-dark);font:700 11px Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+    .admin-content{padding:0 clamp(24px,6vw,68px) 46px}
+    .admin-intro{margin:0;padding:22px 0 25px;color:var(--muted);font:14px/1.6 Inter,sans-serif;border-bottom:1px solid var(--line)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+    .stat{padding:18px;background:#eef5fb;border:1px solid #c8d9e8}
+    .stat strong{display:block;color:var(--accent-dark);font:700 23px "Cormorant Garamond",Georgia,serif}
+    .stat span{display:block;margin-top:4px;color:var(--muted);font:10px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+    .access-card{padding:24px;border:1px solid var(--line);background:#fff}
+    .access-card h2{margin:0 0 8px;color:var(--ink);font-size:28px}
+    .access-card p{margin:0 0 18px;color:var(--muted);font:13px/1.55 Inter,sans-serif}
+    .admin-button{display:inline-block;width:100%;padding:14px 16px;text-align:center;text-decoration:none;border:1px solid var(--accent);background:#fff;color:var(--ink);font:700 10px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+    .admin-button.primary{background:var(--ink);color:#fff}
+    .security-note{margin:22px 0 0;padding:14px 16px;background:#f4f8fb;color:var(--accent-dark);font:12px/1.55 Inter,sans-serif}
+    .back{display:inline-block;margin-top:24px;color:var(--accent-dark);font:12px Inter,sans-serif;text-decoration:none}
+    @media(max-width:620px){.admin-header{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr}.access-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="admin-page">
+    <section class="admin-shell" aria-labelledby="admin-title">
+      <header class="admin-header">
+        <div><p class="eyebrow">Joseph & Juliet</p><h1 id="admin-title">RSVP <em>admin</em></h1></div>
+        <div class="admin-lock">Private owner access</div>
+      </header>
+      <div class="admin-content">
+        <p class="admin-intro">Your guest responses are managed in the private Google Form. Use the controls below to see the response table, names, attendance, guest numbers, timestamps, and summary charts.</p>
+        <div class="stats"><div class="stat"><strong>Private</strong><span>Owner-only access</span></div><div class="stat"><strong>Live</strong><span>Central responses</span></div><div class="stat"><strong>Google</strong><span>Secure response storage</span></div></div>
+        <div class="access-grid">
+          <article class="access-card"><h2>Response table</h2><p>Open the Google Form Responses tab to see every guest submission in columns and manage the connected response sheet.</p><a class="admin-button primary" href="https://docs.google.com/forms/d/1xcpOLy--xYXZCv94JdTJXU7ETKtD3dhg4DmtH1lOcMc/edit#responses" target="_blank" rel="noopener">Open response table</a></article>
+          <article class="access-card"><h2>Summary view</h2><p>See attendance totals and response charts. Google will require the owner Google account if you are not already signed in.</p><a class="admin-button" href="https://docs.google.com/forms/d/1xcpOLy--xYXZCv94JdTJXU7ETKtD3dhg4DmtH1lOcMc/viewanalytics" target="_blank" rel="noopener">View response summary</a></article>
+        </div>
+        <p class="security-note"><strong>Security:</strong> guest visitors cannot see the response table from this page. Google protects the response links and only the form owner or an account explicitly granted access can open them.</p>
+        <a class="back" href="index.html">← Back to RSVP</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
