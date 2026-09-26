@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b9964b" />
+    <meta name="description" content="Joseph and Juliet wedding RSVP — Monday 21 December 2026." />
+    <title>Joseph & Juliet | Wedding RSVP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="invitation-card" aria-labelledby="page-title">
+        <div class="gold-line"></div>
+        <div class="ornament" aria-hidden="true"><span></span><b>✦</b><span></span></div>
+        <p class="eyebrow">A celebration of love</p>
+        <h1 id="page-title">Joseph and Juliet<br /><em>Wedding RSVP</em></h1>
+        <p class="date-line">Monday, 21 December 2026</p>
+
+        <div class="intro-copy">
+          <p>We are delighted to celebrate our special day with you.</p>
+          <p>Kindly confirm your attendance by completing this RSVP form.</p>
+        </div>
+
+        <div class="details-grid">
+          <div class="detail"><span class="detail-label">Wedding date</span><span>Monday, 21 December 2026</span></div>
+          <div class="detail"><span class="detail-label">Venue</span><span>Munondo 11 Events</span></div>
+          <div class="detail"><span class="detail-label">Wedding colours</span><span>Gold and White</span></div>
+          <div class="detail"><span class="detail-label">Dress code</span><span>Dark shades — black, navy and charcoal grey</span></div>
+        </div>
+
+        <p class="deadline">Kindly submit your response by <strong>15 October 2026</strong>.</p>
+
+        <div class="signature">With love,<br /><strong>Joseph and Juliet</strong></div>
+
+        <div class="contacts">
+          <p>For more information, contact us on:</p>
+          <div><span>Groom</span><a href="tel:0775486365">0775486365</a></div>
+          <div><span>Bride</span><a href="tel:0788999593">0788999593</a></div>
+        </div>
+      </section>
+
+      <section class="rsvp-card" aria-labelledby="rsvp-heading">
+        <div class="section-heading">
+          <span class="step-number">01</span>
+          <div>
+            <p class="eyebrow">Your response</p>
+            <h2 id="rsvp-heading">Will you be attending our wedding?</h2>
+          </div>
+        </div>
+
+        <form id="rsvp-form">
+          <fieldset>
+            <legend>Attendance <span>*</span></legend>
+            <label class="choice"><input type="radio" name="attendance" value="Yes" required /><span class="radio-mark"></span><span>Yes, I’ll be there</span></label>
+            <label class="choice"><input type="radio" name="attendance" value="No" /><span class="radio-mark"></span><span>Sadly, I cannot attend</span></label>
+            <label class="choice"><input type="radio" name="attendance" value="Maybe" /><span class="radio-mark"></span><span>Maybe</span></label>
+          </fieldset>
+
+          <div class="form-divider"></div>
+
+          <div class="field-block">
+            <label for="guests">How many invited guests will you be attending with? <span>*</span></label>
+            <p class="field-note">Please select only the number of guests stated on your invitation card. We are unable to accommodate additional guests.</p>
+            <select id="guests" name="guests" required>
+              <option value="" selected disabled>Select number of guests</option>
+              <option>1</option><option>2</option><option>3</option><option>Other</option>
+            </select>
+          </div>
+
+          <div class="field-block">
+            <label for="names">Full name(s) of everyone attending, including your name <span>*</span></label>
+            <textarea id="names" name="names" rows="3" required placeholder="Type the full name(s) here"></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Send RSVP <span>→</span></button>
+          <p class="form-footnote">Your response is private and will only be used for wedding planning.</p>
+          <div id="success-message" class="success-message" role="status" hidden>Thank you — your RSVP has been recorded.</div>
+        </form>
+      </section>
+      <footer>Joseph &amp; Juliet <span>•</span> 21.12.2026 <a class="admin-link" href="admin.html">Owner admin</a></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
