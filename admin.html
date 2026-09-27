@@ -9,34 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .admin-page{width:min(100% - 24px,720px);margin:24px auto 30px}
-    .admin-card{position:relative;background:#fff;border:1px solid #c8d9e8;box-shadow:0 18px 50px rgba(18,52,91,.13);overflow:hidden}
-    .admin-card:before{content:"";display:block;height:6px;background:linear-gradient(90deg,#12345b,#2d6fa3,#a9cbe3,#2d6fa3,#12345b)}
-    .admin-inner{padding:34px clamp(20px,6vw,52px) 38px;text-align:center}
-    .admin-mark{width:42px;height:42px;margin:0 auto 10px;border:1px solid var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-size:18px}
-    .admin-inner h1{margin:8px 0 24px;font-size:clamp(38px,7vw,58px);line-height:.9}
-    .admin-inner h1 em{color:var(--accent-dark);font-weight:500}
-    .admin-actions{display:grid;gap:12px;margin-top:26px}
-    .admin-button{display:block;padding:15px 18px;border:1px solid var(--accent);background:#fff;color:var(--ink);text-decoration:none;font:700 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-    .admin-button.primary{background:var(--ink);color:#fff}
-    .admin-footer{margin-top:20px;color:var(--muted);font:10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
-    .admin-footer a{color:var(--accent-dark);text-decoration:none}
+    .admin-page{width:min(100% - 18px,900px);margin:18px auto 28px}.admin-card{position:relative;background:#fff;border:1px solid #c8d9e8;box-shadow:0 18px 50px rgba(18,52,91,.13);overflow:hidden}.admin-card:before{content:"";display:block;height:6px;background:linear-gradient(90deg,#12345b,#2d6fa3,#a9cbe3,#2d6fa3,#12345b)}.admin-inner{padding:30px clamp(14px,5vw,42px) 36px}.admin-head{display:flex;justify-content:space-between;align-items:end;gap:18px}.admin-head h1{margin:8px 0 0;font-size:clamp(38px,7vw,58px);line-height:.9}.admin-head h1 em{color:var(--accent-dark);font-weight:500}.admin-lock{color:var(--accent-dark);font:700 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}.login{max-width:360px;margin:10px auto 0;text-align:center}.login input{width:100%;margin:6px 0;padding:12px;border:1px solid #b8ccdd;font:14px Inter,sans-serif}.login button,.small-button{width:100%;padding:13px 15px;border:0;background:var(--ink);color:#fff;font:700 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}.error{color:#9b3d4b;font:11px Inter,sans-serif;margin:8px}.dashboard{display:none}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 18px}.stat{padding:14px;background:#eef5fb;border:1px solid #c8d9e8}.stat strong{display:block;color:var(--accent-dark);font:700 24px "Cormorant Garamond",Georgia,serif}.stat span{display:block;margin-top:3px;color:var(--muted);font:9px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}.table-wrap{overflow-x:auto;border:1px solid #c8d9e8}table{width:100%;border-collapse:collapse;min-width:570px;text-align:left}th{padding:13px 14px;background:#e5f0f8;color:var(--accent-dark);font:700 10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}td{padding:14px;border-top:1px solid #d8e5ef;color:var(--ink);font:16px/1.25 "Cormorant Garamond",Georgia,serif}.yes{display:inline-block;padding:5px 8px;background:#dcecf7;color:#174a78;font:700 10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}.actions{display:flex;gap:10px;margin-top:16px}.small-button{display:inline-block;text-align:center;text-decoration:none;flex:1}.outline{background:#fff;color:var(--ink);border:1px solid var(--accent)}.back{display:block;margin-top:20px;text-align:center;color:var(--accent-dark);font:11px Inter,sans-serif;text-decoration:none}@media(max-width:620px){.admin-head{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr}.actions{flex-direction:column}}
   </style>
 </head>
 <body>
-  <main class="admin-page">
-    <section class="admin-card" aria-labelledby="admin-title">
-      <div class="admin-inner">
-        <div class="admin-mark" aria-hidden="true">✦</div>
-        <p class="eyebrow">Joseph & Juliet</p>
-        <h1 id="admin-title">Attendee <em>list</em></h1>
-        <div class="admin-actions">
-          <a class="admin-button primary" href="https://docs.google.com/forms/d/1xcpOLy--xYXZCv94JdTJXU7ETKtD3dhg4DmtH1lOcMc/edit#responses" target="_blank" rel="noopener">View attendee details</a>
-          <a class="admin-button" href="https://docs.google.com/forms/d/1xcpOLy--xYXZCv94JdTJXU7ETKtD3dhg4DmtH1lOcMc/viewanalytics" target="_blank" rel="noopener">View attendance summary</a>
-        </div>
-        <p class="admin-footer"><a href="index.html">← Back to RSVP</a></p>
-      </div>
-    </section>
-  </main>
+<main class="admin-page"><section class="admin-card"><div class="admin-inner">
+  <div class="admin-head"><div><p class="eyebrow">Joseph & Juliet</p><h1>People <em>coming</em></h1></div><div class="admin-lock">Owner only</div></div>
+  <section id="login" class="login"><input id="user" placeholder="Admin user" autocomplete="username"><input id="pass" type="password" placeholder="Password" autocomplete="current-password"><button id="loginButton">Open attendee list</button><p id="error" class="error" hidden>Incorrect details.</p></section>
+  <section id="dashboard" class="dashboard">
+    <div class="stats"><div class="stat"><strong>1</strong><span>Responses</span></div><div class="stat"><strong>1</strong><span>Attending</span></div><div class="stat"><strong>3</strong><span>Guests coming</span></div></div>
+    <div class="table-wrap"><table><thead><tr><th>Guest name(s)</th><th>Attending</th><th>Guests</th><th>Submitted</th></tr></thead><tbody><tr><td><strong>Tatenda</strong></td><td><span class="yes">Yes</span></td><td>3</td><td>26 Sep 2026</td></tr></tbody></table></div>
+    <div class="actions"><a class="small-button outline" href="https://docs.google.com/forms/d/1xcpOLy--xYXZCv94JdTJXU7ETKtD3dhg4DmtH1lOcMc/edit#responses" target="_blank" rel="noopener">Refresh live list</a><a class="small-button" href="index.html">Back to RSVP</a></div>
+  </section>
+</div></section></main>
+<script>const u=document.querySelector('#user'),p=document.querySelector('#pass'),e=document.querySelector('#error');function openList(){if(u.value==='1234'&&p.value==='5678'){document.querySelector('#login').style.display='none';document.querySelector('#dashboard').style.display='block'}else e.hidden=false}document.querySelector('#loginButton').addEventListener('click',openList);p.addEventListener('keydown',event=>{if(event.key==='Enter')openList()});</script>
 </body>
 </html>
