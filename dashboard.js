@@ -71,9 +71,7 @@ function setStatus(message, error = false) {
 function render() {
   const visible = state.rows.filter(row => row.names.toLowerCase().includes(state.query));
   const confirmed = state.rows.filter(row => row.attendance.toLowerCase() === 'yes');
-  $('#confirmed').textContent = confirmed.length;
-  $('#attending').textContent = confirmed.reduce((sum, row) => sum + row.people, 0);
-  $('#additional').textContent = confirmed.reduce((sum, row) => sum + row.additional, 0);
+  $('#simple-summary').textContent = `${confirmed.length} confirmation${confirmed.length === 1 ? '' : 's'} · ${confirmed.reduce((sum, row) => sum + row.people, 0)} people coming`;
   $('#updated').textContent = state.rows.length ? `Updated ${formatDate(state.rows[0].timestamp)}` : 'No confirmations yet';
 
   if (!visible.length) {
@@ -96,6 +94,7 @@ function render() {
 async function loadResponses() {
   if (CONFIG.endpoint.includes('PASTE_APPS_SCRIPT')) {
     setStatus('Connect response feed', true);
+    $('#simple-summary').textContent = 'Waiting for live confirmations';
     $('#guest-cards').innerHTML = '<div class="error-box">Add your deployed Apps Script web-app URL to dashboard.js or the page URL before publishing.</div>';
     return;
   }
